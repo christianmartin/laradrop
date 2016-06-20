@@ -1,12 +1,12 @@
 jQuery.fn.laradrop = function(options) {	
     Dropzone.autoDiscover = false;
     options = options == undefined ? {} : options;
-    var fileHandler = options.fileHandler ? options.fileHandler : 'laradrop',
-    	fileDeleteHandler = options.fileDeleteHandler ? options.fileDeleteHandler : 'laradrop/0',
-    	fileSrc = options.fileSrc ? options.fileSrc : 'laradrop',
-    	fileCreateHandler = options.fileCreateHandler ? options.fileCreateHandler : 'laradrop/create',
-    	fileMoveHandler = options.fileMoveHandler ? options.fileMoveHandler : 'laradrop/move',
-    	containersUrl = options.containersUrl ? options.containersUrl : 'laradrop/containers',
+    var fileHandler = options.fileHandler ? options.fileHandler : '/laradrop',
+    	fileDeleteHandler = options.fileDeleteHandler ? options.fileDeleteHandler : '/laradrop/0',
+    	fileSrc = options.fileSrc ? options.fileSrc : '/laradrop',
+    	fileCreateHandler = options.fileCreateHandler ? options.fileCreateHandler : '/laradrop/create',
+    	fileMoveHandler = options.fileMoveHandler ? options.fileMoveHandler : '/laradrop/move',
+    	containersUrl = options.containersUrl ? options.containersUrl : '/laradrop/containers',
     	csrfToken = options.csrfToken,
     	csrfTokenField = options.csrfTokenField ? options.csrfTokenField : '_token',
     	actionConfirmationText = options.actionConfirmationText ? options.actionConfirmationText : 'Are you sure?',
