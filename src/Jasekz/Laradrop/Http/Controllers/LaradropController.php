@@ -71,7 +71,7 @@ class LaradropController extends BaseController {
             $fileData['alias'] = Input::get('filename') ? Input::get('filename') : date('m.d.Y - G:i:s');
             $fileData['type'] = 'folder';
             if(Input::get('pid') > 0) {
-                $fileData['parent_id'] = Input::get('pid');
+                $fileData['property_id'] = Input::get('pid');
             }
             
             $this->file->create($fileData);
@@ -171,7 +171,7 @@ class LaradropController extends BaseController {
             $fileData['public_resource_url'] = config('laradrop.disk_public_url') . '/' . $movedFileName;
             $fileData['type'] = $fileExt;
             if(Input::get('pid') > 0) {
-                $fileData['parent_id'] = Input::get('pid');
+                $fileData['property_id'] = Input::get('pid');
             }
             $meta = $disk->getDriver()->getAdapter()->getMetaData($movedFileName);
             $meta['disk'] = config('laradrop.disk');

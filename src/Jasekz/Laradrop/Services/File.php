@@ -18,12 +18,12 @@ class File extends FileModel {
     {
         try {
             $out = [];
-            
-            if($this->count() && $parentId > 0) {
-                $files = $this->where('id', '=', $parentId)->first()->immediateDescendants()->get();
-            } else if($this->count()) {
-                $files = $this->orderBy('parent_id')->first()->getSiblingsAndSelf();
-            }
+            $files = $this->where('property_id', '=', $parentId)->first()->immediateDescendants()->get();
+            //if($this->count() && $parentId > 0) {
+            //    $files = $this->where('id', '=', $parentId)->first()->immediateDescendants()->get();
+            //} else if($this->count()) {
+            //    $files = $this->orderBy('parent_id')->first()->getSiblingsAndSelf();
+            //}
             
             if(isset($files)) {
                 
