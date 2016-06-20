@@ -1,9 +1,9 @@
-<div class="col-md-2" file-id="[[id]]">
+<div class="col-md-2 laradrop-thumbnail thumbnail" file-id="[[id]]">
     <div class="panel panel-default">
         <div class="panel-body">
             <img src="[[fileSrc]]" alt="[[alias]]" class="img-responsive">
             <div class="text-center">
-                <p>[[alias]]</p>
+                <p class="laradrop-filealias">[[alias]]</p>
             </div>
         </div>
         <div class="panel-footer">
