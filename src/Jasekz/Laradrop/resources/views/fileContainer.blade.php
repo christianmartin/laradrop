@@ -1,4 +1,4 @@
-<div class="col-md-2 laradrop-thumbnail thumbnail" file-id="[[id]]">
+<div class="col-md-2 laradrop-thumbnail" file-id="[[id]]">
     <div class="panel panel-default">
         <div class="panel-body">
             <img src="[[fileSrc]]" alt="[[alias]]" class="img-responsive">
