@@ -142,7 +142,7 @@ jQuery.fn.laradrop = function(options) {
 
 		   // get data
 		   jQuery.ajax({
-			    url: fileSrc,
+			    url: fileSrc+'?pid='+currentFolderId,
 			    type: 'GET',
 			    dataType: 'json',
 			    success: function(res) {

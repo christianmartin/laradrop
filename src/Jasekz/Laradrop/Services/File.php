@@ -18,7 +18,7 @@ class File extends FileModel {
     {
         try {
             $out = [];
-            $files = $this->where('property_id', '=', $parentId)->first()->immediateDescendants()->get();
+            $files = $this->where('property_id', '=', $parentId)->get();
             //if($this->count() && $parentId > 0) {
             //    $files = $this->where('id', '=', $parentId)->first()->immediateDescendants()->get();
             //} else if($this->count()) {
