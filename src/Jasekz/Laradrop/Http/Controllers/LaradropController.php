@@ -122,11 +122,12 @@ class LaradropController extends BaseController {
             $disk = Storage::disk(config('laradrop.disk'));
 
             /*
-             * create thumbnail if needed
+             * create thumbnail and resize to fit all needed dimensions
              */
             $fileData['has_thumbnail'] = 0;
-            if ($fileSize <= ( (int) config('laradrop.max_thumbnail_size') * 1000000) && in_array($fileExt, ['jpg', 'jpeg', 'png', 'gif'])) {
+            if ($fileSize <= ( (int) config('laradrop.max_thumbnail_size') * 1000000) && in_array($fileExt, ['jpg', 'jpeg', 'png', 'gif', 'JPG'])) {
 
+                //THUMB
                 $thumbDims = config('laradrop.thumb_dimensions');
                 $img = Image::make($tmpStorage . '/' . $movedFileName);
                 $img->fit($thumbDims['width'], $thumbDims['height']);
@@ -136,6 +137,22 @@ class LaradropController extends BaseController {
                 $disk->put('_thumb_' . $movedFileName, fopen($tmpStorage . '/_thumb_' . $movedFileName, 'r+'));
                 File::delete($tmpStorage . '/_thumb_' . $movedFileName);                
                 $fileData['has_thumbnail'] = 1;
+
+                //MEDIUM
+                $img = Image::make($tmpStorage . '/' . $movedFileName);
+                $img->fit(740, 500);
+                $img->save($tmpStorage . '/_md_' . $movedFileName);
+
+                $disk->put('_md_' . $movedFileName, fopen($tmpStorage . '/_md_' . $movedFileName, 'r+'));
+                File::delete($tmpStorage . '/_md_' . $movedFileName);                
+
+                //LARGE
+                $img = Image::make($tmpStorage . '/' . $movedFileName);
+                $img->fit(950, 640);
+                $img->save($tmpStorage . '/_lg_' . $movedFileName);
+
+                $disk->put('_lg_' . $movedFileName, fopen($tmpStorage . '/_lg_' . $movedFileName, 'r+'));
+                File::delete($tmpStorage . '/_lg_' . $movedFileName);                
                 
             } 
 
@@ -144,6 +161,7 @@ class LaradropController extends BaseController {
              */
             $disk->put($movedFileName, fopen($tmpStorage . '/' . $movedFileName, 'r+'));
             File::delete($tmpStorage . '/' . $movedFileName);
+
             
             /*
              * save in db
