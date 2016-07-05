@@ -12,7 +12,7 @@
         </div>
         
             <button data-dz-remove class="btn btn-danger btn-xs cancel">
-                Cancel
+                <i class="fa fa-cross"></i> Cancel
             </button>
     </div>
 </div>

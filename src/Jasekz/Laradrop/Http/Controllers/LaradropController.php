@@ -130,7 +130,9 @@ class LaradropController extends BaseController {
                 //THUMB
                 $thumbDims = config('laradrop.thumb_dimensions');
                 $img = Image::make($tmpStorage . '/' . $movedFileName);
-                $img->fit($thumbDims['width'], $thumbDims['height']);
+                $img->fit($thumbDims['width'], $thumbDims['height'], function ($constraint) {
+                    $constraint->upsize();
+                });
                 $img->insert(public_path() . '/img/wm-thumb.png', 'center');
                 $img->save($tmpStorage . '/_thumb_' . $movedFileName);
 
@@ -141,7 +143,9 @@ class LaradropController extends BaseController {
 
                 //MEDIUM
                 $img = Image::make($tmpStorage . '/' . $movedFileName);
-                $img->fit(740, 500);
+                $img->fit(740, 500, function ($constraint) {
+                    $constraint->upsize();
+                });
                 $img->insert(public_path() . '/img/wm.png', 'center');
                 $img->save($tmpStorage . '/_md_' . $movedFileName);
 
@@ -150,7 +154,9 @@ class LaradropController extends BaseController {
 
                 //LARGE
                 $img = Image::make($tmpStorage . '/' . $movedFileName);
-                $img->fit(950, 640);
+                $img->fit(950, 640, function ($constraint) {
+                    $constraint->upsize();
+                });
                 $img->insert(public_path() . '/img/wm.png', 'center');
                 $img->save($tmpStorage . '/_lg_' . $movedFileName);
 
